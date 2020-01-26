@@ -1,0 +1,28 @@
+---
+- name: install packages
+  dnf:
+    name:
+      - tmux
+      - xclip
+  become: true
+  become_method: sudo
+  become_user: root
+
+- name: Install "Oh My Tmux"
+  git:
+    clone: true
+    repo: https://github.com/gpakosz/.tmux.git
+    dest: "{{ lookup('env', 'HOME') }}/.tmux"
+    force: true
+
+- name: Create symlink for "On My Tmux"
+  file:
+    src: "{{ lookup('env', 'HOME') }}/.tmux/.tmux.conf"
+    dest: "{{ lookup('env', 'HOME') }}/.tmux.conf"
+    state: link
+
+- name: tmux configuration
+  file:
+    src: "{{ lookup('env', 'PWD') }}/tmux/.tmux.conf.local"
+    path: "{{ ansible_env.HOME }}/.tmux.conf.local"
+    state: link
