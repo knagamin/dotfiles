@@ -1,0 +1,14 @@
+# .zshrc.mine
+
+# 上端(or下端)で上(or下)に移動しようとすると履歴をめくる
+# つまり複数行編集時に履歴めくりが発生しない
+autoload -U up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^P" up-line-or-beginning-search
+bindkey "^N" down-line-or-beginning-search
+
+#autoload -U zed && zed -b
+#bindkey -M zed "^P" up-line-or-search
+#bindkey -M zed "^N" down-line-or-search
+

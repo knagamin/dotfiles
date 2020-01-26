@@ -1,0 +1,13 @@
+escape ^Tt
+defscrollback 100000
+defutf8 on
+deflog on
+logfile $HOME/.screen/logs/screen-%Y%m%d-%n.log
+encoding utf8 utf8
+vbell off
+startup_message off
+hardstatus alwayslastline "%{-b gk}%-w%{+b kg}%50>%n %t%{-b gk}%+w%<"
+shell $SHELL
+term xterm-256color
+defbce on
+altscreen on
