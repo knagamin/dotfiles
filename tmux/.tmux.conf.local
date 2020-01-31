@@ -292,5 +292,7 @@ set -g mode-keys vi
  set -g prefix C-t
  bind C-t send-prefix
 
+
 # move status line to top
 set -g status-position top
+set-option -g repeat-time 0
