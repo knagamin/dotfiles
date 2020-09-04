@@ -11,17 +11,17 @@
   git:
     clone: true
     repo: https://github.com/gpakosz/.tmux.git
-    dest: "{{ lookup('env', 'HOME') }}/.tmux"
+    dest: "{{ home_dir }}/.tmux"
     force: true
 
 - name: Create symlink for "On My Tmux"
   file:
-    src: "{{ lookup('env', 'HOME') }}/.tmux/.tmux.conf"
-    dest: "{{ lookup('env', 'HOME') }}/.tmux.conf"
+    src: "{{ home_dir }}/.tmux/.tmux.conf"
+    dest: "{{ home_dir }}/.tmux.conf"
     state: link
 
 - name: tmux configuration
   file:
-    src: "{{ lookup('env', 'PWD') }}/tmux/.tmux.conf.local"
-    path: "{{ ansible_env.HOME }}/.tmux.conf.local"
+    src: "{{ playbook_dir }}/tmux/.tmux.conf.local"
+    path: "{{ home_dir }}/.tmux.conf.local"
     state: link

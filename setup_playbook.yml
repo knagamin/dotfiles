@@ -2,13 +2,14 @@
 - name: Setup dotfiles by symlinking
   hosts: localhost
   vars:
+    home_dir: "{{ lookup('env', 'HOME') }}"
     conf_files:
-      - src: "{{ lookup('env', 'PWD') }}/vim/.vimrc"
-        dest: "{{ ansible_env.HOME }}/.vimrc"
-      - src: "{{ lookup('env', 'PWD') }}/screen/.screenrc"
-        dest: "{{ ansible_env.HOME }}/.screenrc"
-      - src: "{{ lookup('env', 'PWD') }}/tmux/.tmux.conf.local"
-        dest: "{{ ansible_env.HOME }}/.tmux.conf.local"
+      - src: "{{ playbook_dir }}/vim/.vimrc"
+        dest: "{{ home_dir }}/.vimrc"
+      - src: "{{ playbook_dir }}/screen/.screenrc"
+        dest: "{{ home_dir }}/.screenrc"
+      - src: "{{ playbook_dir }}/tmux/.tmux.conf.local"
+        dest: "{{ home_dir }}/.tmux.conf.local"
   tasks:
 
     - name: put each configuration files in place
