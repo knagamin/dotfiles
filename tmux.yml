@@ -1,12 +1,11 @@
 ---
 - name: install packages
+  become: true
   dnf:
     name:
       - tmux
       - xclip
-  become: true
-  become_method: sudo
-  become_user: root
+  ignore_errors: true
 
 - name: Install "Oh My Tmux"
   git:

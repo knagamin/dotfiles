@@ -1,0 +1,22 @@
+---
+- name: Install Plugin
+  git:
+    repo: https://github.com/VundleVim/Vundle.vim.git
+    dest: "{{ ansible_env.HOME }}/.vim/bundle/Vundle.vim"
+    version: v0.10.2
+
+- name: Fetch Color Schema
+  git:
+    repo: https://github.com/sickill/vim-monokai.git
+    dest: /var/tmp/vim-monokai
+
+- name: Create directory for color schema
+  file:
+    path: "{{ ansible_env.HOME }}/.vim/colors"
+    state: directory
+
+- name: Put the schema in place
+  copy:
+    remote_src: true
+    src: /var/tmp/vim-monokai/colors/monokai.vim
+    dest: "{{ ansible_env.HOME }}/.vim/colors/monokai.vim"

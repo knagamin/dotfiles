@@ -11,11 +11,12 @@
         dest: "{{ ansible_env.HOME }}/.tmux.conf.local"
   tasks:
 
-    - name: tmux configuration
+    - name: put each configuration files in place
       file:
         src: "{{ item.src }}"
         path: "{{ item.dest }}"
         state: link
       loop: "{{ conf_files }}"
 
+    - include_tasks: vim.yml
     - include_tasks: tmux.yml
