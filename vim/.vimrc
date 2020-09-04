@@ -154,7 +154,15 @@ set cmdheight=2
 " 上部にタブを表示しない
 set showtabline=0
 
+"----------------------------------------------
+" Folding
+set foldlevel=99
+
+"----------------------------------------------
+" Color
 colorscheme monokai
+
+
 
 "----------------------------------------------
 " Custom Key Binds
@@ -171,6 +179,9 @@ augroup grepopen
     autocmd QuickfixCmdPost vimgrep cw
 augroup END
 
+" Folding
+nnoremap <space> za
+
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -178,27 +189,58 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'vim-syntastic/syntastic'
-"Plugin 'nvie/vim-flake8'
+
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-"Plugin 'Shougo/denite.nvim'
+map <Leader>m <plug>NERDTreeTabsToggle<CR>
+let NERDTreeIgnore=['\.pyc$', '\~$']
+
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+Plugin 'tyru/caw.vim'
+Plugin 'mrk21/yaml-vim'
+Plugin 'Yggdroot/indentLine'
+let g:indentLine_enabled = 0
+Plugin 'tpope/vim-commentary'
+Plugin 'kien/ctrlp.vim'
+let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn|pyc)|__pycache__)$'
+
+"----------------------------
+" plugins for golang
+"----------------------------
+Plugin 'fatih/vim-go'
+
+" ---------------------------
+"  plugins for python
+" --------------------------
+Plugin 'vim-syntastic/syntastic'
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 let python_highlight_all = 1
+
+Plugin 'nvie/vim-flake8'
+Plugin 'davidhalter/jedi-vim'
+let g:jedi#use_tabs_not_buffers = 1
+
+Plugin 'tmhedberg/SimpylFold'
+let g:SimpylFold_docstring_preview=1
+
+Plugin 'vim-scripts/indentpython.vim'
+
+"Plugin 'itchyny/vim-gof'
+
 syntax on
 
 call vundle#end()
 filetype plugin indent on
 
-autocmd FileType yaml setlocal ai et ts=2 sw=2
+autocmd FileType yaml setlocal ai et ts=2 sw=2 sts=2 indentkeys-=0# indentkeys-=<:> foldmethod=indent nofoldenable
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
+
