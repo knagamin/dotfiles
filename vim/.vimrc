@@ -2,6 +2,9 @@
 " .vimrc
 "----------------------------------------------
 
+" Enable backspace
+set backspace=indent,eol,start
+
 " disable compatible options
 set nocompatible
 
@@ -233,6 +236,12 @@ let g:SimpylFold_docstring_preview=1
 Plugin 'vim-scripts/indentpython.vim'
 
 "Plugin 'itchyny/vim-gof'
+
+" ---------------------------
+"  plugins for TODO
+" --------------------------
+Plugin 'jceb/vim-orgmode'
+Plugin 'tpope/vim-speeddating'
 
 syntax on
 
