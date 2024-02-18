@@ -121,6 +121,9 @@ set noswapfile
 " ファイル名の表示
 set statusline=%F
 
+" ファイルタイプの表示
+set statusline+=[ft:%{&filetype}]
+
 " 変更チェック表示
 set statusline+=%m
 
@@ -135,6 +138,7 @@ set statusline+=[ENC=%{&fileencoding}]
 
 " 現在行数/全行数
 set statusline+=[LOW=%l/%L]
+
 
 " Always display statusline
 set laststatus=2
@@ -221,9 +225,6 @@ let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 let python_highlight_all = 1
 
 Plugin 'nvie/vim-flake8'
@@ -243,12 +244,19 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'jceb/vim-orgmode'
 Plugin 'tpope/vim-speeddating'
 
+" -------------------------
+" Ansible
+" -------------------------
+Plugin 'pearofducks/ansible-vim'
+
 syntax on
 
 call vundle#end()
 filetype plugin indent on
 
 autocmd FileType yaml setlocal ai et ts=2 sw=2 sts=2 indentkeys-=0# indentkeys-=<:> foldmethod=indent nofoldenable
+au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
+au BufRead,BufNewFile */roles/*.yml set filetype=yaml.ansible
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
 
