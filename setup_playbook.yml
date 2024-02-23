@@ -8,8 +8,8 @@
         dest: "{{ home_dir }}/.vimrc"
       - src: "{{ playbook_dir }}/screen/.screenrc"
         dest: "{{ home_dir }}/.screenrc"
-      - src: "{{ playbook_dir }}/tmux/.tmux.conf.local"
-        dest: "{{ home_dir }}/.tmux.conf.local"
+#      - src: "{{ playbook_dir }}/tmux/.tmux.conf.local"
+#        dest: "{{ home_dir }}/.tmux.conf.local"
   tasks:
 
     - name: put each configuration files in place
@@ -20,4 +20,4 @@
       loop: "{{ conf_files }}"
 
     - include_tasks: vim.yml
-    - include_tasks: tmux.yml
+#    - include_tasks: tmux.yml

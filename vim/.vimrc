@@ -194,60 +194,30 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" Plugin management
 Plugin 'gmarik/Vundle.vim'
-"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-"Plugin 'Valloric/YouCompleteMe'
+" Status Line
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" File Explorer
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 map <Leader>m <plug>NERDTreeTabsToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$']
-
+" Git
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
+" Comment
 Plugin 'tyru/caw.vim'
+" YAML
 Plugin 'mrk21/yaml-vim'
-"Plugin 'Yggdroot/indentLine'
-let g:indentLine_enabled = 0
-Plugin 'tpope/vim-commentary'
+" Indentation
+Plugin 'Yggdroot/indentLine'
+" File Search
 Plugin 'kien/ctrlp.vim'
-let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn|pyc)|__pycache__)$'
+" Surrounding
+Plugin 'tpope/vim-surround'
 
-"----------------------------
-" plugins for golang
-"----------------------------
-Plugin 'fatih/vim-go'
-
-" ---------------------------
-"  plugins for python
-" --------------------------
-Plugin 'vim-syntastic/syntastic'
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let python_highlight_all = 1
-
-Plugin 'nvie/vim-flake8'
-Plugin 'davidhalter/jedi-vim'
-let g:jedi#use_tabs_not_buffers = 1
-
-Plugin 'tmhedberg/SimpylFold'
-let g:SimpylFold_docstring_preview=1
-
-Plugin 'vim-scripts/indentpython.vim'
-
-"Plugin 'itchyny/vim-gof'
-
-" ---------------------------
-"  plugins for TODO
-" --------------------------
-Plugin 'jceb/vim-orgmode'
-Plugin 'tpope/vim-speeddating'
-
-" -------------------------
-" Ansible
-" -------------------------
-Plugin 'pearofducks/ansible-vim'
+let g:indentLine_enabled = 1
+let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn|pyc)|__pycache__|ansible_collections|venv)$'
 
 syntax on
 
