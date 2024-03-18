@@ -163,7 +163,8 @@ set showtabline=0
 
 "----------------------------------------------
 " Folding
-set foldlevel=99
+set nofoldenable
+" set foldlevel=99
 
 "----------------------------------------------
 " Color
@@ -216,8 +217,22 @@ Plugin 'kien/ctrlp.vim'
 " Surrounding
 Plugin 'tpope/vim-surround'
 
+" Terraform
+Plugin 'hashivim/vim-terraform'
+
 let g:indentLine_enabled = 1
 let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn|pyc)|__pycache__|ansible_collections|venv)$'
+
+" fzf
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+let mapleader = "\<Space>"
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>g :GFiles<CR>
+nnoremap <silent> <leader>G :GFiles?<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>h :History<CR>
+nnoremap <silent> <leader>r :Rg<CR>
 
 syntax on
 
